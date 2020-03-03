@@ -1,0 +1,13 @@
+.number_5 {
+  width: 160px;
+  background-color: #29e;
+  color: #fff;
+  font-size: 3em;
+  border-radius: 4px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  margin: 5px;
+  touch-action: none;
+  position: absolute;
+  text-align: center;
+}
