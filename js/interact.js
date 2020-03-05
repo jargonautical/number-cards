@@ -1,15 +1,16 @@
 var numbers = [ 33750, 33750, 33750, 33750, 44000, 44000, 44000, 45566, 65000, 95000, 103500, 112495, 138188, 141666, 181500, 185000, 190000, 194375, 195000, 205000, 292500, 301999, 4600000, 5600000 ];
-var rows = 6;
+var rows = 7;
 var cols = 5;
 var max_rows = 6;
 var max_cols = 7;
+var markers = [ 125000, 500000 ];
 
 addElements(numbers);
 drawRandom(numbers,max_rows,max_cols);
 
 $("#showGrid").click(function(){
     rows = 6;
-    cols = 6;
+    cols = 5;
     reDrawGrid(numbers,rows,cols);
 });
 
@@ -19,9 +20,21 @@ $("#showNumberLine").click(function(){
     reDrawGrid(numbers,rows,cols);
 });
 
+$("#showRandom").click(function(){
+  reDrawRandom(numbers,max_rows,max_cols);
+});
+
+$(".number").click(function(event) {
+  $("#"+event.target.id).toggleClass('red');
+});
+
+
 function addElements(numbers) {
   $.each(numbers, function(idx) {
     $("body").append('<div id="number'+idx+'" class="number">'+numbers[idx]+'</div>'); 
+  });
+  $.each(markers, function(idx) {
+    $("body").append('<div id="marker'+idx+'" class="marker"><text class="marker_text">'+markers[idx]+'</text><arrow class="marker_arrow"></arrow></div>'); 
   });
 }
 
@@ -44,6 +57,26 @@ function drawRandom(numbers,max_rows,max_cols) {
   });
 }
 
+function reDrawRandom(numbers,max_rows,max_cols) {
+  var done = {};
+  console.log('in here');
+  $.each(numbers, function(idx) {
+    var row = Math.floor(Math.random() * max_rows);
+    var col = Math.floor(Math.random() * max_cols);
+    var key = row + ',' + col;
+    while (done[key]) {
+      var row = Math.floor(Math.random() * max_rows);
+      var col = Math.floor(Math.random() * max_cols);
+      var key = row + ',' + col;
+    }
+    done[key] = "true";
+    var y = 100 * row;
+    var x = 180 * col;
+    putBackGrid('number'+idx,x,y);
+  });
+}
+
+
 function drawGrid(numbers,rows,cols) {
   var row = 0;
   $.each(numbers, function(idx) {
@@ -54,6 +87,12 @@ function drawGrid(numbers,rows,cols) {
     var x = 180 * (idx % cols);
     var element = document.getElementById('number'+idx);
     makeInteractive(element,x,y);
+    $.each(markers, function(index) {
+      if ((markers[index] >= numbers[idx]) && (markers[index] <= numbers[idx + 1])) {
+        var markerElement = document.getElementById('markers'+index);
+        makeInteractive(markerElement,x+160,y-20);
+      }
+    });
   });
 }
 
