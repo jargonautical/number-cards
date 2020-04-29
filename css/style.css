@@ -1,6 +1,6 @@
 .number {
   font-family: helvetica, sans;
-  width: 160px;
+  width: 195px;
   background-color: #29e;
   color: #fff;
   font-size: 2.5em;
@@ -42,8 +42,8 @@
   .number {
     background-color: #fff;
     color: black;
-    padding-right: 8px;
-    padding-left: 8px;
+    padding-right: 0px;
+    padding-left: 0px;
     border-radius: 0px;
     margin: 0px;
     border-right: 1px dotted gray;

@@ -28,13 +28,16 @@ $(".number").click(function(event) {
   $("#"+event.target.id).toggleClass('red');
 });
 
+function formatNumber(num) {
+  return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+}
 
 function addElements(numbers) {
   $.each(numbers, function(idx) {
-    $("body").append('<div id="number'+idx+'" class="number">'+numbers[idx]+'</div>'); 
+    $("body").append('<div id="number'+idx+'" class="number">'+formatNumber(numbers[idx])+'</div>'); 
   });
   $.each(markers, function(idx) {
-    $("body").append('<div id="marker'+idx+'" class="marker"><text class="marker_text">'+markers[idx]+'</text><arrow class="marker_arrow"></arrow></div>'); 
+    $("body").append('<div id="marker'+idx+'" class="marker"><text class="marker_text">'+formatNumber(markers[idx])+'</text><arrow class="marker_arrow"></arrow></div>'); 
   });
 }
 
@@ -51,7 +54,7 @@ function drawRandom(numbers,max_rows,max_cols) {
     }
     done[key] = "true";
     var y = 100 * row;
-    var x = 180 * col;
+    var x = 200 * col;
     var element = document.getElementById('number'+idx);
     makeInteractive(element,x,y);
   });
@@ -71,7 +74,7 @@ function reDrawRandom(numbers,max_rows,max_cols) {
     }
     done[key] = "true";
     var y = 100 * row;
-    var x = 180 * col;
+    var x = 200 * col;
     putBackGrid('number'+idx,x,y);
   });
 }
@@ -84,7 +87,7 @@ function drawGrid(numbers,rows,cols) {
       row += 1;
     }
     var y = 100 * row;
-    var x = 180 * (idx % cols);
+    var x = 200 * (idx % cols);
     var element = document.getElementById('number'+idx);
     makeInteractive(element,x,y);
     $.each(markers, function(index) {
@@ -113,7 +116,7 @@ function reDrawGrid(numbers,rows,cols) {
       row += 1;
     }
     var y = 100 * row;
-    var x = 180 * (idx % cols);
+    var x = 200 * (idx % cols);
     putBackGrid('number'+idx,x,y);
   });
   setTimeout(function () { drawGrid(numbers,rows,cols);},1000);
