@@ -1,4 +1,5 @@
 .number {
+  font-family: helvetica, sans;
   width: 160px;
   background-color: #29e;
   color: #fff;
@@ -36,4 +37,30 @@
   display: block;
   margin-left: auto;
   margin-right: auto;
+}
+@media print {
+  .number {
+    background-color: #fff;
+    color: black;
+    padding-right: 8px;
+    padding-left: 8px;
+    border-radius: 0px;
+    margin: 0px;
+    border-right: 1px dotted gray;
+    padding-bottom: 25px;
+    border-bottom: 1px dotted grey;
+    padding-top: 25px;
+  }
+  .number:nth-child(5n-1) {
+    border-left: 1px dotted gray;
+  }
+  .number:nth-child(6), .number:nth-child(7), .number:nth-child(8), .number:nth-child(3), .number:nth-child(4), .number:nth-child(5) {
+    border-top: 1px dotted gray;
+  }
+  .marker {
+    display: none;
+  }
+  button {
+    display: none;
+  }
 }
