@@ -23,9 +23,20 @@ $("#showNumberLine").click(function(){
 $("#showRandom").click(function(){
   reDrawRandom(numbers,max_rows,max_cols);
 });
-
+/*
 $(".number").click(function(event) {
   $("#"+event.target.id).toggleClass('red');
+});
+*/
+$(".number").on('mousedown', function (evt) {
+  $(".number").on('mouseup mousemove', function handler(evt) {
+    if (evt.type === 'mouseup') {
+      $("#"+event.target.id).toggleClass('red');
+    } else {
+      // drag
+    }
+    $(".number").off('mouseup mousemove', handler);
+  });
 });
 
 function formatNumber(num) {
@@ -36,9 +47,10 @@ function addElements(numbers) {
   $.each(numbers, function(idx) {
     $("body").append('<div id="number'+idx+'" class="number">'+formatNumber(numbers[idx])+'</div>'); 
   });
-  $.each(markers, function(idx) {
+  /*$.each(markers, function(idx) {
     $("body").append('<div id="marker'+idx+'" class="marker"><text class="marker_text">'+formatNumber(markers[idx])+'</text><arrow class="marker_arrow"></arrow></div>'); 
   });
+  */
 }
 
 function drawRandom(numbers,max_rows,max_cols) {
