@@ -1,22 +1,22 @@
-var numbers = [ 33750, 33750, 33750, 33750, 44000, 44000, 44000, 45566, 65000, 95000, 103500, 112495, 138188, 141666, 181500, 185000, 190000, 194375, 195000, 205000, 292500, 301999, 4600000, 5600000 ];
-var rows = 7;
-var cols = 5;
-var max_rows = 6;
-var max_cols = 7;
-var markers = [ 125000, 500000 ];
+var numbers = [ 7, 11, 16, 19, 19, 22, 29, 30, 49, 54, 76 ];
+var rows = 3;
+var cols = 4;
+var max_rows = 5;
+var max_cols = 5;
+var markers = [ 35, 50 ];
 
 addElements(numbers);
 drawRandom(numbers,max_rows,max_cols);
 
 $("#showGrid").click(function(){
-    rows = 6;
-    cols = 5;
+    rows = 3;
+    cols = 4;
     reDrawGrid(numbers,rows,cols);
 });
 
 $("#showNumberLine").click(function(){
     rows = 1;
-    cols = 1000;
+    cols = 12;
     reDrawGrid(numbers,rows,cols);
 });
 
@@ -45,10 +45,10 @@ function formatNumber(num) {
 
 function addElements(numbers) {
   $.each(numbers, function(idx) {
-    $("body").append('<div id="number'+idx+'" class="number">'+formatNumber(numbers[idx])+'</div>'); 
+    $("body").append('<div id="number'+idx+'" class="number">'+formatNumber(numbers[idx])+'</div>');
   });
   /*$.each(markers, function(idx) {
-    $("body").append('<div id="marker'+idx+'" class="marker"><text class="marker_text">'+formatNumber(markers[idx])+'</text><arrow class="marker_arrow"></arrow></div>'); 
+    $("body").append('<div id="marker'+idx+'" class="marker"><text class="marker_text">'+formatNumber(markers[idx])+'</text><arrow class="marker_arrow"></arrow></div>');
   });
   */
 }

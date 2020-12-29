@@ -1,7 +1,12 @@
+p, h1, h2, h3, h4, h5, h6, ol, ul {
+  font-family: courier;
+  color: black;
+}
+
 .number {
-  font-family: helvetica, sans;
+  font-family: courier;
   width: 195px;
-  background-color: #29e;
+  background-color: lightslategray;
   color: #fff;
   font-size: 2.5em;
   border-radius: 4px;
@@ -14,7 +19,7 @@
   z-index: -1;
 }
 .red {
-  background-color: red;
+  background-color: tomato;
 }
 .marker {
   text-align: center;
